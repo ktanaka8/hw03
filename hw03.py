@@ -22,19 +22,22 @@ def read_five_ints():
     and if the input converted to int is outside of [0,10], prints
     "Error in read_five_ints: input integer outside of range".
     """
-    grades[0]=input("Give me the next grade in [0 to 10]:")
-    grades[1]=input("Give me the next grade in [0 to 10]:")
-    grades[2]=input("Give me the next grade in [0 to 10]:")
-    grades[3]=input("Give me the next grade in [0 to 10]:")
-    grades[4]=input("Give me the next grade in [0 to 10]:")
-    for idx in range(len(grades)):
-        if all(num.isdigit() for num in grades):
-            grade_test = list(map(int, grades))
-            if all(0<=g<=10 for g in grade_test):
-                grades[idx]=grade_test
-            else:
-                print("Error in read_five_ints: input string is not for an integer")
-        exit() 
+grades[0]=input("Give me the next grade in [0 to 10]:")
+grades[1]=input("Give me the next grade in [0 to 10]:")
+grades[2]=input("Give me the next grade in [0 to 10]:")
+grades[3]=input("Give me the next grade in [0 to 10]:")
+grades[4]=input("Give me the next grade in [0 to 10]:")
+for idx in range(len(grades)):
+    if all(num.isdigit() for num in grades):
+        grade_test = list(map(int, grades))
+        if all(0 <= g <= 10 for g in grade_test):
+            grades[idx]=grade_test
+        else:
+            print("Error in read_five_ints: input integer outside of range")
+        exit()
+    else:
+        print("Error in read_five_ints: input string is not for an integer")
+    exit()
                 
 
 
