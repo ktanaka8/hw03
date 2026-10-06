@@ -31,7 +31,11 @@ for idx in range(len(grades)):
     if all(num.isdigit() for num in grades):
         grade_test = list(map(int, grades))
         if all(0 <= g <= 10 for g in grade_test):
-            grades[idx]=grade_test
+            grades[0]=grade_test[0]
+            grades[1]=grade_test[1]
+            grades[2]=grade_test[2]
+            grades[3]=grade_test[3]
+            grades[4]=grade_test[4]
         else:
             print("Error in read_five_ints: input integer outside of range")
         exit()
