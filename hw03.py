@@ -1,5 +1,5 @@
 """
-Name: (put your name here)
+Name: Kathryn Tanaka
 Peers: (add any collaborators)
 References: (anything you checked to solve this)
 """
@@ -22,27 +22,28 @@ def read_five_ints():
     and if the input converted to int is outside of [0,10], prints
     "Error in read_five_ints: input integer outside of range".
     """
-grades[0]=input("Give me the next grade in [0 to 10]:")
-grades[1]=input("Give me the next grade in [0 to 10]:")
-grades[2]=input("Give me the next grade in [0 to 10]:")
-grades[3]=input("Give me the next grade in [0 to 10]:")
-grades[4]=input("Give me the next grade in [0 to 10]:")
-for idx in range(len(grades)):
-    if all(num.isdigit() for num in grades):
-        grade_test = list(map(int, grades))
-        if all(0 <= g <= 10 for g in grade_test):
-            grades[0]=grade_test[0]
-            grades[1]=grade_test[1]
-            grades[2]=grade_test[2]
-            grades[3]=grade_test[3]
-            grades[4]=grade_test[4]
-        else:
-            print("Error in read_five_ints: input integer outside of range")
-        exit()
-    else:
-        print("Error in read_five_ints: input string is not for an integer")
-    exit()
+    for idx in range(len(grades)):
+        grades[0]=input("Give me the next grade in [0 to 10]:")
+        grades[1]=input("Give me the next grade in [0 to 10]:")
+        grades[2]=input("Give me the next grade in [0 to 10]:")
+        grades[3]=input("Give me the next grade in [0 to 10]:")
+        grades[4]=input("Give me the next grade in [0 to 10]:")
+        if all(num.isdigit() for num in grades):
+            grade_test = list(map(int, grades))
+            if all(0 <= g <= 10 for g in grade_test):
+                grades[0]=grade_test[0]
+                grades[1]=grade_test[1]
+                grades[2]=grade_test[2]
+                grades[3]=grade_test[3]
+                grades[4]=grade_test[4]
+            else:
+                print("Error in read_five_ints: input integer outside of range")
                 
+                exit()
+        else:
+            print("Error in read_five_ints: input string is not for an integer")
+            exit()
+        return
 
 
 # Task 2:
@@ -56,7 +57,22 @@ def pick_averaging_method():
     Any other input prints
     'Error in pick_averaging_method: incorrect option picked'.
     """
-    pass
+    operation=str(input("Pick 'a' for mean, 'b' for median, 'c' for mode: "))
+    if operation == 'a':
+        print("picked: Mean")
+        avg = statistics.mean(grades)
+        print(avg)
+    elif operation == 'b':
+        print("picked: Median")
+        avg = statistics.median(grades)
+        print(avg)
+    elif operation == 'c':
+        print("picked: Mode")
+        avg=statistics.mode(grades)
+        print(avg)
+    else:
+        print("Error in pick_averaging_method: incorrect option picked")
+        exit()
 
 # Task 3:
 #  Complete the function "pick_visualization" below:
