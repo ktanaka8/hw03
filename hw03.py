@@ -36,6 +36,34 @@ def read_five_ints():
             print("Error in read_five_ints: input string is not for an integer:") # print error message
             exit() # exit the program
 
+# Alternative implementaion of Task 1.  The difference is we factor out handling and validating a _single_ user input as a helper function, which make the loop inside read_five_ints_v2 below easier to read.
+def read_grade_from_user() -> int|None:
+    """ reads one grade from user
+
+    if the user input are not digits, prints an error message, and return None
+    if the user input are not in valid range, prints an error message, and return None
+    otherwise, cast to in-range integer, and return that.
+    """
+    user_grade = input("Give me the next grade in [0 to 10]:") # obtrain user input as a string
+    if user_grade.isdigit(): # check if string contains only digits
+        user_grade = int(user_grade) # convert to integer
+        if 0 <= user_grade and user_grade <= 10: # check if value is in range
+            return user_grade # store the valid, in-range value to the corresponding index
+        else:
+            print("Error in read_five_ints: input integer outside of range") # print error message
+            return # None
+    else:
+        print("Error in read_five_ints: input string is not for an integer:") # print error message
+        return # None
+
+def read_five_ints_v2():
+    '''same as read_five_ints'''
+    for idx in range(len(grades)):
+        user_grade = read_grade_from_user()
+        if user_grade is not None:
+            grades[idx] = user_grade
+        else:
+            exit(1)
 
 
 # Task 2:
