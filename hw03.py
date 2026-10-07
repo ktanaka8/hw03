@@ -1,7 +1,7 @@
 """
 Name: Kathryn Tanaka
-Peers: (add any collaborators)
-References: (anything you checked to solve this)
+Peers: Mathieu Zhang (uncle)
+References: Pythong Tutor code visualizer
 """
 
 # imported modules
@@ -21,18 +21,24 @@ def read_five_ints():
     "Error in read_five_ints: input string is not for an integer",
     and if the input converted to int is outside of [0,10], prints
     "Error in read_five_ints: input integer outside of range".
+    
+    PARAMS:
+        - u_grades: user input of any digit from 1-10
+    RETURNS:
+        - grades: int of initial u_grade string
+    
     """
     for idx in range(len(grades)):
-        u_grades=input("Give me the next grade in [0 to 10]:")
-        if u_grades.isdigit():
-            u_grades=int(u_grades)
-            if 0 <= u_grades <= 10:
-                grades[idx]=u_grades
+        u_grades=input("Give me the next grade in [0 to 10]:") #gets user-input grade as a string
+        if u_grades.isdigit(): #checks that there are only digits in the string
+            u_grades=int(u_grades) #casts digits as integers
+            if 0 <= u_grades <= 10: #checks that the user-input grade is within range
+                grades[idx]=u_grades #stores values in the corresponding places in the list
             else:
-                print("Error in read_five_ints: input integer outside of range")
+                print("Error in read_five_ints: input integer outside of range") #if values are not in range, print error message
                 exit()
         else:
-            print("Error in read_five_ints: input string is not for an integer")
+            print("Error in read_five_ints: input string is not for an integer") #if input is not 100% digits, print error message
             exit()
 
 
@@ -46,22 +52,27 @@ def pick_averaging_method():
     User should pick 'a' for mean, 'b' for median, 'c' for mode.
     Any other input prints
     'Error in pick_averaging_method: incorrect option picked'.
+    
+    PARAMS:
+        - operation: user choice of a, b, or c
+    RETURNS:
+        - avg: value of the user-input choice after performing an operation on it
     """
-    operation=input("Pick 'a' for mean, 'b' for median, 'c' for mode: ")
+    operation=input("Pick 'a' for mean, 'b' for median, 'c' for mode: ") #get user input on which operation to perform
     if operation == 'a':
-        print("picked: Mean")
-        avg = statistics.mean(grades)
+        print("picked: Mean") #print which operation the user chose
+        avg = statistics.mean(grades) #assign variable 'avg' to the average value of input grades
         return avg
     elif operation == 'b':
-        print("picked: Median")
-        avg = statistics.median(grades)
+        print("picked: Median") #print which operation the user chose
+        avg = statistics.median(grades) #assign variable 'avg' to the median value of input grades
         return avg
     elif operation == 'c':
-        print("picked: Mode")
-        avg = statistics.mode(grades)
+        print("picked: Mode") #print which operation the user chose
+        avg = statistics.mode(grades) #assign variable 'avg' to the mode value of input grade
         return avg
     else:
-        print("Error in pick_averaging_method: incorrect option picked")
+        print("Error in pick_averaging_method: incorrect option picked") #if user input is not 'a', 'b', 'c' then print error message
         exit()
 
 # Task 3:
@@ -74,14 +85,18 @@ def pick_visualization(average):
     User should pick '1' for print average, or '2' for plot average.
     Any other input prints
     'Error in pick_visualization: incorrect option picked'.
+    PARAMS:
+        - pick: user input of 1 or 2
+    RETURNS:
+        - average
     """
-    pick=str(input("Pick '1' for print average, or '2' for plot average: "))
+    pick=str(input("Pick '1' for print average, or '2' for plot average: ")) #asks user to pick 1 or 2
     if pick == '1':
-        print_list_and_average(average)
+        print_list_and_average(average) #if 1 is picked, the entire list and its average is printed
     elif pick == '2':
-        plot_grades(average)
+        plot_grades(average) #if 2 is picked, the value obtained by operation user picked earlier will be marked by a carat in a list of the numbers
     else:
-        print("Error in pick_visualization: incorrect option picked")
+        print("Error in pick_visualization: incorrect option picked") #if user picked something other than 1 or 2, print error message
         exit()
 
 
